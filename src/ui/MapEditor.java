@@ -259,7 +259,7 @@ public class MapEditor extends JFrame implements ActionListener {
                             }
                         });
                     } else {
-                        System.out.println("Somthing wrong");
+                        System.out.println("Somthing wrong" + map[i][j]);
                     }
                 }
             }
@@ -331,7 +331,7 @@ public class MapEditor extends JFrame implements ActionListener {
 
         //Percolate data
         for (int i = 0; i < buttons.size(); i ++) {
-            if (i % (gridSize) == 0) {
+            if (i % (gridSize) == 0 && i > 0) {
                 sb.append("\n");
             }
             JButton selectedButton = buttons.get(i);
