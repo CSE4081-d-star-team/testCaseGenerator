@@ -7,8 +7,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.FocusListener;
 import java.io.File;
 
 import javax.swing.BorderFactory;
@@ -21,12 +23,13 @@ import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
+import src.file.ImportFile;
 import src.map.Generator;
 
 public class MainPanel extends JPanel implements ActionListener {
     JTextField seedTField, matrixSizeTField;
     JLabel fileLabel, seedLabel, matrixSizeLabel;
-    JButton genButton, locateFileButton;
+    JButton genButton, locateFileButton, editorButton;
     JPanel emptyPanel, functionPanel, topPanel, middlePanel, bottomPanel;
     Font smallerFont = new Font("Dialog", Font.BOLD, 12);
     Font font = new Font("Dialog", Font.BOLD, 16);
@@ -35,7 +38,7 @@ public class MainPanel extends JPanel implements ActionListener {
     Border etchedBrdr = BorderFactory.createEtchedBorder();
     Border compBrdr = BorderFactory.createCompoundBorder();
 
-    String filePath = "./data/output.txt";
+    static String filePath = "./data/output.txt";
 
     MainPanel() {
         setBackgroundPanels();
@@ -46,6 +49,7 @@ public class MainPanel extends JPanel implements ActionListener {
         this.setLayout(new GridLayout(8, 1, 2, 2));
         emptyPanel = new JPanel();
         functionPanel = new JPanel();
+        functionPanel.setPreferredSize(new Dimension(300, 30));
         setFilePanel();
         topPanel = new JPanel();
         setTopPanel();
@@ -65,14 +69,14 @@ public class MainPanel extends JPanel implements ActionListener {
         locateFileButton.setFont(smallerFont);
         locateFileButton.setVerticalAlignment(JLabel.CENTER);
         locateFileButton.setHorizontalAlignment(JLabel.CENTER);
-        locateFileButton.setPreferredSize(new Dimension(100, 30));
+        locateFileButton.setPreferredSize(new Dimension(80, 30));
         locateFileButton.setBorder(compBrdr);
         locateFileButton.setBackground(ColorCodes.menubarColor);
         fileLabel = new JLabel("./data/output.txt");
         fileLabel.setFont(smallerFont);
         fileLabel.setVerticalAlignment(JLabel.CENTER);
         fileLabel.setHorizontalAlignment(JLabel.CENTER);
-        fileLabel.setPreferredSize(new Dimension(100, 30));
+        fileLabel.setPreferredSize(new Dimension(220, 30));
 
         functionPanel.add(fileLabel);
         functionPanel.add(locateFileButton);
@@ -87,7 +91,7 @@ public class MainPanel extends JPanel implements ActionListener {
         matrixSizeLabel = new JLabel();
         matrixSizeLabel.setVerticalAlignment(JLabel.CENTER);
         matrixSizeLabel.setHorizontalAlignment(JLabel.CENTER);
-        matrixSizeLabel.setPreferredSize(new Dimension(100, 30));
+        matrixSizeLabel.setPreferredSize(new Dimension(130, 30));
         matrixSizeLabel.setBorder(compBrdr);
         matrixSizeLabel.setBackground(ColorCodes.menubarColor);
         //matrixSizeLabel.setForeground(Color.BLACK);
@@ -124,11 +128,40 @@ public class MainPanel extends JPanel implements ActionListener {
         matrixSizeTField = new JTextField("Type integer");
         matrixSizeTField.setPreferredSize(new Dimension(100, 30));
         matrixSizeTField.setHorizontalAlignment(JLabel.CENTER);
+        matrixSizeTField.setEditable(true);
+        matrixSizeTField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent arg0) {
+                if (matrixSizeTField.getText().equals("Type integer")) {
+                    matrixSizeTField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent arg0) {
+                if (matrixSizeTField.getText().equals("")) {
+                    matrixSizeTField.setText("Type integer");
+                }
+            }
+        });
         seedTField = new JTextField("Type integer");
         seedTField.setPreferredSize(new Dimension(100, 30));
         seedTField.setHorizontalAlignment(JLabel.CENTER);
-
-
+        seedTField.setEditable(true);
+        seedTField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent arg0) {
+                if (seedTField.getText().equals("Type integer")) {
+                    seedTField.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent arg0) {
+                if (seedTField.getText().equals("")) {
+                    seedTField.setText("Type integer");
+                }
+            }
+        });
         middlePanel.add(matrixSizeTField);
         middlePanel.add(seedTField);
     }
@@ -141,7 +174,10 @@ public class MainPanel extends JPanel implements ActionListener {
     private void addButtons() {
         genButton = new JButton("Generate");
         genButton.setBackground(ColorCodes.traitColor);
+        editorButton = new JButton("Editor");
+        editorButton.setBackground(ColorCodes.traitColor);
         bottomPanel.add(genButton);
+        bottomPanel.add(editorButton);
     }
 
     private void setBottomPanel() {
@@ -155,14 +191,12 @@ public class MainPanel extends JPanel implements ActionListener {
             if (e.getSource() instanceof JTextField) {
                 JTextField jtf= (JTextField)e.getSource();
                 jtf.setBackground(Color.WHITE);
-                jtf.setText("");
             }
         }
         public void mousePressed(MouseEvent e) {
             if (e.getSource() instanceof JTextField) {
                 JTextField jtf= (JTextField)e.getSource();
                 jtf.setBackground(Color.WHITE);
-                jtf.setText("");
             }
         }
         public void mouseReleased(MouseEvent e) {}
@@ -182,23 +216,32 @@ public class MainPanel extends JPanel implements ActionListener {
     public void activateListener() {
         genButton.addActionListener(this);
         locateFileButton.addActionListener(this);
+        editorButton.addActionListener(this);
+
         genButton.setFocusable(false);
 
         genButton.addMouseListener(ml);
         seedTField.addMouseListener(ml);
         matrixSizeTField.addMouseListener(ml);
+        editorButton.addMouseListener(ml);
+    }
+
+    private boolean checkInputs() {
+        return false;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getSource();
         if (obj.equals(genButton)) {
-            int seed = Integer.parseInt(seedTField.getText());
-            int matrixSize = Integer.parseInt(matrixSizeTField.getText());
-
-            Generator generator = new Generator(matrixSize, seed);
-            generator.exportToFile(filePath);
-            
+            try {
+                int seed = Integer.parseInt(seedTField.getText());
+                int matrixSize = Integer.parseInt(matrixSizeTField.getText());
+                Generator generator = new Generator(matrixSize, seed);
+                generator.exportToFile(filePath);
+            } catch (Exception ex) {
+                System.out.println("Input numbers");
+            }
         } else if (obj.equals(locateFileButton)) {
             JFileChooser fileChooser = new JFileChooser();
             int returnValue = fileChooser.showOpenDialog(null);
@@ -208,6 +251,24 @@ public class MainPanel extends JPanel implements ActionListener {
                 filePath = selectedFile.getName();
                 fileLabel.setText(filePath);
             }
+        } else if (obj.equals(editorButton)) {
+            ImportFile importFile = new ImportFile();
+            boolean exist = importFile.fileExist(filePath);
+            if (exist) {
+                System.out.println("File found");
+                char[][] map = importFile.readFile(filePath);
+                MapEditor mapEditor = new MapEditor(map);
+            } else {
+                System.out.println("File not found");
+                try {
+                    int seed = Integer.parseInt(seedTField.getText());
+                    int matrixSize = Integer.parseInt(matrixSizeTField.getText());
+                    MapEditor mapEditor = new MapEditor(matrixSize, seed);
+                } catch (Exception ex) {
+                    System.out.println("Input numbers");
+                }
+            }
+            
         }
     }
 }

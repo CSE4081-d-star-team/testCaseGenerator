@@ -18,8 +18,8 @@ public class MainFrame extends JFrame {
 
     //Fixed frame size
 	final int FRAME_WIDTH = 400, FRAME_HEIGHT = 500;
-    int SCREEN_CENTER_X;
-    int SCREEN_CENTER_Y;
+    static int SCREEN_CENTER_X;
+    static int SCREEN_CENTER_Y;
 
     //global variable
     MenuBar menuBar; //This is discrete from java.awt.MenuBar;

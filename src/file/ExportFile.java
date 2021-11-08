@@ -1,4 +1,4 @@
-package src.export;
+package src.file;
 
 import java.awt.Desktop;
 
@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriteFile {
+public class ExportFile {
 
     File file;
 
@@ -18,7 +18,7 @@ public class WriteFile {
         try {
             file.createNewFile();
         } catch (Exception ex) {
-            System.out.println(ex);
+            System.out.println("File creation error: " + ex);
         }
 
         try {
@@ -27,7 +27,7 @@ public class WriteFile {
             bw.write(content);
             bw.close();
         } catch (IOException ex) {
-            System.out.println(ex);
+            System.out.println("File export error: " + ex);
         }
         Desktop desktop = Desktop.getDesktop();  
         if(file.exists()) {
@@ -36,6 +36,6 @@ public class WriteFile {
             } catch (IOException ex) {
                 System.out.println(ex);
             }
-        }  
+        }
     }
 }

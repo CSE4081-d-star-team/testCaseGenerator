@@ -1,10 +1,9 @@
 package src.map;
 
+import src.file.ExportFile;
 import src.setup.CharSet;
 
 import java.util.Random;
-
-import src.export.WriteFile;
 
 public class Generator {
     
@@ -84,9 +83,30 @@ public class Generator {
         return str;
     }
 
+    public String toString (char[][] map) {
+        String str = "";
+        for (int i = 0; i < MATRIX_SIZE + 2; i++) {
+            for (int j = 0; j < MATRIX_SIZE + 2; j++) {
+                str += map[i][j] + " ";
+            }
+            str += "\n";
+        }
+        return str;
+    }
+
+    public char[][] getMap() {
+        return this.map;
+    }
+
     public void exportToFile(String filePath) {
         String content = toString();
-        WriteFile wf = new WriteFile();
+        ExportFile wf = new ExportFile();
+        wf.writeToFile(content, filePath);
+    }
+
+    public void exportToFile(String filePath, char[][] map) {
+        String content = toString(map);
+        ExportFile wf = new ExportFile();
         wf.writeToFile(content, filePath);
     }
 }
