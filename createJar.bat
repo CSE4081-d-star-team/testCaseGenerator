@@ -1,2 +1,6 @@
-java -jar cvf MapGenerator.jar -C class/
+cd class
+
+jar cvmf MANIFEST.MF ../MapGenerator.jar src/
+
+java -jar ../MapGenerator.jar
 PAUSE

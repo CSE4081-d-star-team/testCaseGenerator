@@ -6,7 +6,7 @@ echo %location%
 cd %location%
 
 ::compiles "calendar related java package files
-cd src\export
+cd src\file
 javac -d ..\..\class\ *.java
 echo "exportation files compilation done."
 
