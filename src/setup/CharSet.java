@@ -11,6 +11,10 @@ public class CharSet {
         return comp == ROBOT ? true : false;
     }
 
+    public static boolean isGoal (char comp) {
+        return comp == GOAL ? true : false;
+    }
+
     public static boolean isObstacle (char comp) {
         return comp == OBSTACLE ? true : false;
     }

@@ -27,8 +27,8 @@ import src.file.ImportFile;
 import src.map.Generator;
 
 public class MainPanel extends JPanel implements ActionListener {
-    JTextField seedTField, matrixSizeTField;
-    JLabel fileLabel, seedLabel, matrixSizeLabel;
+    JTextField seedTField, matrixSizeTField, obstacFieldNumTField;
+    JLabel fileLabel, seedLabel, matrixSizeLabel, obstacFieldNumTLabel;
     JButton genButton, locateFileButton, editorButton;
     JPanel emptyPanel, functionPanel, topPanel, middlePanel, bottomPanel;
     Font smallerFont = new Font("Dialog", Font.BOLD, 12);
@@ -94,7 +94,6 @@ public class MainPanel extends JPanel implements ActionListener {
         matrixSizeLabel.setPreferredSize(new Dimension(130, 30));
         matrixSizeLabel.setBorder(compBrdr);
         matrixSizeLabel.setBackground(ColorCodes.menubarColor);
-        //matrixSizeLabel.setForeground(Color.BLACK);
         matrixSizeLabel.setFont(font);
         matrixSizeLabel.setText("  Matrix Size  ");
         matrixSizeLabel.setOpaque(true);
@@ -106,16 +105,28 @@ public class MainPanel extends JPanel implements ActionListener {
         seedLabel.setPreferredSize(new Dimension(100, 30));
         seedLabel.setBorder(compBrdr);
         seedLabel.setBackground(ColorCodes.menubarColor);
-        //seedLabel.setForeground(Color.BLACK);
         seedLabel.setFont(font);
         seedLabel.setText("  Seed  ");
         seedLabel.setOpaque(true);
         seedLabel.repaint();
         seedLabel.setVisible(true);
 
+        obstacFieldNumTLabel = new JLabel();
+        obstacFieldNumTLabel.setVerticalAlignment(JLabel.CENTER);
+        obstacFieldNumTLabel.setHorizontalAlignment(JLabel.CENTER);
+        obstacFieldNumTLabel.setPreferredSize(new Dimension(100, 30));
+        obstacFieldNumTLabel.setBorder(compBrdr);
+        obstacFieldNumTLabel.setBackground(ColorCodes.menubarColor);
+        obstacFieldNumTLabel.setFont(font);
+        obstacFieldNumTLabel.setText(" Obstacles ");
+        obstacFieldNumTLabel.setOpaque(true);
+        obstacFieldNumTLabel.repaint();
+        obstacFieldNumTLabel.setVisible(true);
+
         topPanel.add(new JPanel());
         topPanel.add(matrixSizeLabel);
         topPanel.add(seedLabel);
+        topPanel.add(obstacFieldNumTLabel);
         topPanel.add(new JPanel());
     }
 
@@ -162,8 +173,29 @@ public class MainPanel extends JPanel implements ActionListener {
                 }
             }
         });
+
+        obstacFieldNumTField = new JTextField("Type integer");
+        obstacFieldNumTField.setPreferredSize(new Dimension(100, 30));
+        obstacFieldNumTField.setHorizontalAlignment(JLabel.CENTER);
+        obstacFieldNumTField.setEditable(true);
+        obstacFieldNumTField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent arg0) {
+                if (obstacFieldNumTField.getText().equals("Type integer")) {
+                    obstacFieldNumTField.setText("");
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent arg0) {
+                if (obstacFieldNumTField.getText().equals("")) {
+                    obstacFieldNumTField.setText("Type integer");
+                }
+            }
+        });
+
         middlePanel.add(matrixSizeTField);
         middlePanel.add(seedTField);
+        middlePanel.add(obstacFieldNumTField);
     }
 
     private void setMiddlePanel() {
@@ -223,11 +255,8 @@ public class MainPanel extends JPanel implements ActionListener {
         genButton.addMouseListener(ml);
         seedTField.addMouseListener(ml);
         matrixSizeTField.addMouseListener(ml);
+        obstacFieldNumTField.addMouseListener(ml);
         editorButton.addMouseListener(ml);
-    }
-
-    private boolean checkInputs() {
-        return false;
     }
 
     @Override
@@ -237,7 +266,8 @@ public class MainPanel extends JPanel implements ActionListener {
             try {
                 int seed = Integer.parseInt(seedTField.getText());
                 int matrixSize = Integer.parseInt(matrixSizeTField.getText());
-                Generator generator = new Generator(matrixSize, seed);
+                int obstacleNum = Integer.parseInt(obstacFieldNumTField.getText());
+                Generator generator = new Generator(matrixSize, seed, obstacleNum);
                 generator.exportToFile(filePath);
             } catch (Exception ex) {
                 System.out.println("Input numbers");

@@ -9,11 +9,21 @@ public class Generator {
     
     int MATRIX_SIZE = 0;
     int SEED = 1;
+    int obstacleNum = -1;
     char[][] map;
     public Generator(int matrixSize, int seed) {
         this.MATRIX_SIZE = matrixSize;
         this.map = new char[matrixSize + 2][matrixSize + 2];
         SEED = seed;
+        createArray();
+        generateObstacles();
+    }
+
+    public Generator(int matrixSize, int seed, int obstacleNum) {
+        this.MATRIX_SIZE = matrixSize;
+        this.map = new char[matrixSize + 2][matrixSize + 2];
+        SEED = seed;
+        this.obstacleNum = obstacleNum;
         createArray();
         generateObstacles();
     }
@@ -59,14 +69,27 @@ public class Generator {
     private void generateObstacles() {
         int bound = 10 * SEED;
         Random rand = new Random(SEED);
-        for (int i = 0; i < MATRIX_SIZE + 2; i++) {
-            for (int j = 0; j < MATRIX_SIZE + 2; j++) {
-                //Random seed
-                int number = rand.nextInt(bound);
-                if (number < bound / 3) {
-                    if (CharSet.isEmptyCell(this.map[i][j])) {
-                        this.map[i][j] = CharSet.OBSTACLE;
+        int count = 0;
+        if (obstacleNum == -1) {
+            for (int i = 0; i < MATRIX_SIZE + 2; i++) {
+                for (int j = 0; j < MATRIX_SIZE + 2; j++) {
+                    //Random seed
+                    int number = rand.nextInt(bound);
+                    if (number < bound / 3) {
+                        if (CharSet.isEmptyCell(this.map[i][j])) {
+                            this.map[i][j] = CharSet.OBSTACLE;
+                        }
                     }
+                }
+            }
+        } else {
+            while (count != obstacleNum) {
+                int x = (int)(rand.nextDouble() * MATRIX_SIZE);
+                int y = (int)(rand.nextDouble() * MATRIX_SIZE);
+
+                if (CharSet.isEmptyCell(this.map[y][x])) {
+                    this.map[y][x] = CharSet.OBSTACLE;
+                    count++;
                 }
             }
         }

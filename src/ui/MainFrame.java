@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 0L;
 
     //Fixed frame size
-	final int FRAME_WIDTH = 400, FRAME_HEIGHT = 500;
+	final int FRAME_WIDTH = 500, FRAME_HEIGHT = 500;
     static int SCREEN_CENTER_X;
     static int SCREEN_CENTER_Y;
 
