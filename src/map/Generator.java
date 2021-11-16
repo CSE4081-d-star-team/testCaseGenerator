@@ -86,7 +86,6 @@ public class Generator {
             while (count != obstacleNum) {
                 int x = (int)(rand.nextDouble() * MATRIX_SIZE);
                 int y = (int)(rand.nextDouble() * MATRIX_SIZE);
-
                 if (CharSet.isEmptyCell(this.map[y][x])) {
                     this.map[y][x] = CharSet.OBSTACLE;
                     count++;

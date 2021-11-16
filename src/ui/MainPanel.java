@@ -39,7 +39,7 @@ public class MainPanel extends JPanel implements ActionListener {
     Border compBrdr = BorderFactory.createCompoundBorder();
 
     static String filePath = "./data/output.txt";
-
+    static File workingDirectory = new File(filePath);
     MainPanel() {
         setBackgroundPanels();
         activateListener();
@@ -274,11 +274,16 @@ public class MainPanel extends JPanel implements ActionListener {
             }
         } else if (obj.equals(locateFileButton)) {
             JFileChooser fileChooser = new JFileChooser();
-            int returnValue = fileChooser.showOpenDialog(null);
+            
+            fileChooser.setDialogTitle("Specify a file to save");
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            fileChooser.setCurrentDirectory(workingDirectory);
+            int returnValue = fileChooser.showSaveDialog(this);
             if (returnValue == JFileChooser.APPROVE_OPTION)
             {
+                //File selectedPath = fileChooser.getCurrentDirectory();
                 File selectedFile = fileChooser.getSelectedFile();
-                filePath = selectedFile.getName();
+                filePath = selectedFile.getAbsolutePath();
                 fileLabel.setText(filePath);
             }
         } else if (obj.equals(editorButton)) {
@@ -287,13 +292,15 @@ public class MainPanel extends JPanel implements ActionListener {
             if (exist) {
                 System.out.println("File found");
                 char[][] map = importFile.readFile(filePath);
-                MapEditor mapEditor = new MapEditor(map);
+                //Pop up map editor
+                new MapEditor(map);
             } else {
                 System.out.println("File not found");
                 try {
                     int seed = Integer.parseInt(seedTField.getText());
                     int matrixSize = Integer.parseInt(matrixSizeTField.getText());
-                    MapEditor mapEditor = new MapEditor(matrixSize, seed);
+                    //Pop up map editor
+                    new MapEditor(matrixSize, seed);
                 } catch (Exception ex) {
                     System.out.println("Input numbers");
                 }
