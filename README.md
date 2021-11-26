@@ -21,7 +21,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -34,11 +34,11 @@
     Map generator for path finding algorithms with GUI
     <br />
     <br />
-    <a href="https://github.com/TCC2021SeniorProject/ModelTranslator">View Demo</a>
+    <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator">View Demo</a>
     ·
-    <a href="https://github.com/TCC2021SeniorProject/ModelTranslator/issues">Report Bug</a>
+    <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator/issues">Report Bug</a>
     ·
-    <a href="https://github.com/TCC2021SeniorProject/ModelTranslator/issues">Request Feature</a>
+    <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator/issues">Request Feature</a>
   </p>
 </div>
 
@@ -59,6 +59,18 @@ There are currently 6 features implemented.
 5. Matrix generator
 6. Map editor
 
+When the map is generated, the grid file will be saved in txt file.
+The file contatins 5 main char value.
+
+'X' : Obstacle
+'W' : Wall (Border)
+'R' : Starting point
+'G' : Goal
+' ' : Empty cell
+
+The location of astarting point will be fixed at the coordinate x:2, y:2
+The location of a goal point will be fixed at the coordinate x: map_size - 2, y : map_size - 2
+Therefore, the input grid size should be larger than 6.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 </br>
@@ -128,18 +140,18 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Marco Backman - roni2006@hanmail.net
 
-Project Link: [https://github.com/TCC2021SeniorProject/ModelTranslator](https://github.com/TCC2021SeniorProject/ModelTranslator)
+Project Link: [https://github.com/TCC2021SeniorProject/ModelTranslator](https://github.com/CSE4081-d-star-team/testCaseGenerator)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/TCC2021SeniorProject/ModelTranslator.svg?style=for-the-badge
-[contributors-url]: https://github.com/TCC2021SeniorProject/ModelTranslator/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/TCC2021SeniorProject/ModelTranslator.svg?style=for-the-badge
-[forks-url]: https://github.com/TCC2021SeniorProject/ModelTranslator/network/members
-[stars-shield]: https://img.shields.io/github/stars/TCC2021SeniorProject/ModelTranslator.svg?style=for-the-badge
-[stars-url]: https://github.com/TCC2021SeniorProject/ModelTranslator/stargazers
-[issues-shield]: https://img.shields.io/github/issues/TCC2021SeniorProject/ModelTranslator.svg?style=for-the-badge
-[issues-url]: https://github.com/TCC2021SeniorProject/ModelTranslator/issues
+[contributors-shield]: https://img.shields.io/github/contributors/CSE4081-d-star-team/testCaseGenerator.svg?style=for-the-badge
+[contributors-url]: https://github.com/CSE4081-d-star-team/testCaseGenerator/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CSE4081-d-star-team/testCaseGenerator.svg?style=for-the-badge
+[forks-url]: https://github.com/CSE4081-d-star-team/testCaseGenerator/network/members
+[stars-shield]: https://img.shields.io/github/stars/CSE4081-d-star-team/testCaseGenerator.svg?style=for-the-badge
+[stars-url]: https://github.com/CSE4081-d-star-team/testCaseGenerator/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CSE4081-d-star-team/testCaseGenerator.svg?style=for-the-badge
+[issues-url]: https://github.com/CSE4081-d-star-team/testCaseGenerator/issues
