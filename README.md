@@ -121,8 +121,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Marco Backman - roni2006@hanmail.net
 
-Project Link: [https://github.com/TCC2021SeniorProject/ModelTranslator](https://github.com/CSE4081-d-star-team/testCaseGenerator)
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
