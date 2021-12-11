@@ -76,6 +76,7 @@ Therefore, the input grid size should be larger than 6.
   </br>
   </br>
   <p>Editor - Loads created file and modify easily and save</p>
+  <p>Click and drag to make a change on identicle cells</p>
   <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator">
     <img src="img/editor.gif" alt="Logo" width="380" height="340">
   </a>
