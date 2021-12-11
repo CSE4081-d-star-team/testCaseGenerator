@@ -1,8 +1,3 @@
-<div id="top"></div>
-
-
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -21,10 +16,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
 
 </br>
 
@@ -71,6 +62,25 @@ The file contatins 5 main char value.
 The location of astarting point will be fixed at the coordinate x:2, y:2
 The location of a goal point will be fixed at the coordinate x: map_size - 2, y : map_size - 2
 Therefore, the input grid size should be larger than 6.
+
+## Demo videos
+
+<div align="center">
+  </br>
+  <p>Generator - Creates map on given inputs</p>
+  <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator">
+    <img src="img/generator.gif" alt="Logo" width="380" height="340">
+  </a>
+
+  </br>
+  </br>
+  </br>
+  <p>Editor - Loads created file and modify easily and save</p>
+  <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator">
+    <img src="img/editor.gif" alt="Logo" width="380" height="340">
+  </a>
+
+</div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 </br>

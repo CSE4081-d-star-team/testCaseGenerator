@@ -274,7 +274,6 @@ public class MainPanel extends JPanel implements ActionListener {
             }
         } else if (obj.equals(locateFileButton)) {
             JFileChooser fileChooser = new JFileChooser();
-            
             fileChooser.setDialogTitle("Specify a file to save");
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             fileChooser.setCurrentDirectory(workingDirectory);
