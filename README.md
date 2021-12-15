@@ -25,7 +25,7 @@
     Map generator for path finding algorithms with GUI
     <br />
     <br />
-    <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator/#viewdemo">View Demo</a>
+    <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator/#demo-videos">View Demo</a>
     ·
     <a href="https://github.com/CSE4081-d-star-team/testCaseGenerator/issues">Report Bug</a>
     ·
